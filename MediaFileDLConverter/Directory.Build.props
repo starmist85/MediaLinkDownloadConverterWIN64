@@ -1,0 +1,6 @@
+<Project>
+  <PropertyGroup>
+    <!-- Workaround for corrupted workload manifests in .NET SDK 9.0.311 -->
+    <MSBuildEnableWorkloadResolver>false</MSBuildEnableWorkloadResolver>
+  </PropertyGroup>
+</Project>

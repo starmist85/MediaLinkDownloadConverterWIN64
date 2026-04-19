@@ -1,0 +1,27 @@
+# Build output
+bin/
+obj/
+publish/
+
+# IDE
+.vs/
+*.user
+*.suo
+
+# Tools binaries (too large for git — download separately)
+MediaFileDLConverter/Tools/*.exe
+
+# Installer output & WiX cache
+installer/*.msi
+installer/*.zip
+installer/*.wixpdb
+installer/.wix/
+
+# Temp/generated scripts
+fix_manifests.ps1
+generate_wxs.ps1
+
+# OS
+Thumbs.db
+Desktop.ini
+.DS_Store

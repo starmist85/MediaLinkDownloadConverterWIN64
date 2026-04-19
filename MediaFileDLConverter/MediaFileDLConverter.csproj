@@ -1,0 +1,29 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net9.0-windows</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <UseWPF>true</UseWPF>
+    <AssemblyName>MediaFileDLConverter</AssemblyName>
+    <RootNamespace>MediaFileDLConverter</RootNamespace>
+    <Version>1.0.0</Version>
+    <AssemblyTitle>MediaFileDLConverter</AssemblyTitle>
+    <Description>Media File Downloader and Converter</Description>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="Assets\**" />
+    <Resource Include="Assets\**" />
+  </ItemGroup>
+
+  <!-- Copy yt-dlp, ffmpeg, ffprobe to output Tools folder -->
+  <ItemGroup>
+    <None Include="Tools\*.exe">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <Link>Tools\%(Filename)%(Extension)</Link>
+    </None>
+  </ItemGroup>
+
+</Project>

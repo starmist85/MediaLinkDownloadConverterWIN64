@@ -1,0 +1,167 @@
+<Window x:Class="MediaFileDLConverter.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:views="clr-namespace:MediaFileDLConverter.Views"
+        mc:Ignorable="d"
+        Title="MediaFileDLConverter v1.0"
+        Height="780" Width="920"
+        MinHeight="650" MinWidth="700"
+        WindowStartupLocation="CenterScreen"
+        Background="#141422"
+        Icon="Assets/AppIcon.png">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>   <!-- Header -->
+            <RowDefinition Height="Auto"/>   <!-- Settings Panel (collapsible) -->
+            <RowDefinition Height="*"/>      <!-- Main Content -->
+            <RowDefinition Height="50"/>     <!-- Status Bar -->
+        </Grid.RowDefinitions>
+
+        <!-- ═══════════════════════════════════════════════════ -->
+        <!-- HEADER BAR -->
+        <!-- ═══════════════════════════════════════════════════ -->
+        <Border Grid.Row="0" Padding="0">
+            <Border.Background>
+                <LinearGradientBrush StartPoint="0,0" EndPoint="1,0">
+                    <GradientStop Color="#1A1A30" Offset="0"/>
+                    <GradientStop Color="#2A1A3A" Offset="1"/>
+                </LinearGradientBrush>
+            </Border.Background>
+            <Grid Margin="16,10,16,10">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="Auto"/>
+                </Grid.ColumnDefinitions>
+
+                <!-- Logo -->
+                <Image Grid.Column="0"
+                       Source="Assets/LogoTransparentBackground.png"
+                       Height="42" Width="42"
+                       RenderOptions.BitmapScalingMode="HighQuality"
+                       Margin="0,0,12,0"/>
+
+                <!-- Title -->
+                <StackPanel Grid.Column="1" VerticalAlignment="Center">
+                    <TextBlock Text="MediaFile DLConverter" Foreground="#FFFFFF"
+                               FontSize="17" FontWeight="Bold" Margin="0,0,0,1"/>
+                    <TextBlock Text="v1.0 — Download &amp; Convert Media" Foreground="#8888AA"
+                               FontSize="10"/>
+                </StackPanel>
+
+                <!-- Settings Button -->
+                <Button Grid.Column="3"
+                        Command="{Binding ToggleSettingsCommand}"
+                        Style="{StaticResource IconButton}"
+                        ToolTip="Settings"
+                        Padding="10,8">
+                    <TextBlock Text="⚙" FontSize="20" Foreground="#AAAACC"/>
+                </Button>
+            </Grid>
+        </Border>
+
+        <!-- ═══════════════════════════════════════════════════ -->
+        <!-- SETTINGS PANEL (slides open/closed) -->
+        <!-- ═══════════════════════════════════════════════════ -->
+        <Border Grid.Row="1"
+                Visibility="{Binding IsSettingsOpen, Converter={StaticResource BoolToVisibility}}"
+                Background="#1A1A30" Padding="20,16">
+            <Border Background="#222240" CornerRadius="10" Padding="24,18">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+
+                    <TextBlock Grid.Row="0" Text="⚙  Settings" Foreground="#E0E0F0"
+                               FontSize="16" FontWeight="Bold" Margin="0,0,0,14"/>
+
+                    <Grid Grid.Row="1">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="Auto"/>
+                        </Grid.ColumnDefinitions>
+
+                        <TextBlock Grid.Column="0" Text="Download Folder:"
+                                   Foreground="#AAAACC" FontSize="13"
+                                   VerticalAlignment="Center" Margin="0,0,12,0"/>
+
+                        <Border Grid.Column="1" Background="#2A2A3E" CornerRadius="6" Padding="2">
+                            <TextBox Text="{Binding DownloadDirectory, UpdateSourceTrigger=PropertyChanged}"
+                                     Style="{StaticResource ModernTextBox}"
+                                     FontSize="13" Padding="10,8"
+                                     VerticalAlignment="Center"/>
+                        </Border>
+
+                        <Button Grid.Column="2" Content="Browse"
+                                Command="{Binding BrowseFolderCommand}"
+                                Style="{StaticResource SecondaryButton}"
+                                Margin="10,0,0,0" Padding="16,8"
+                                FontSize="12"/>
+                    </Grid>
+
+                    <StackPanel Grid.Row="2" Orientation="Horizontal"
+                                HorizontalAlignment="Right" Margin="0,16,0,0">
+                        <Button Content="Save Settings"
+                                Command="{Binding SaveSettingsCommand}"
+                                Style="{StaticResource AccentButton}"
+                                Padding="24,8" FontSize="13"/>
+                    </StackPanel>
+                </Grid>
+            </Border>
+        </Border>
+
+        <!-- ═══════════════════════════════════════════════════ -->
+        <!-- MAIN TAB CONTENT -->
+        <!-- ═══════════════════════════════════════════════════ -->
+        <TabControl Grid.Row="2"
+                    SelectedIndex="{Binding SelectedTabIndex}"
+                    Style="{StaticResource ModernTabControl}">
+
+            <TabItem Header="📥  Download" Style="{StaticResource ModernTabItem}">
+                <views:DownloadPage DataContext="{Binding DownloadPageVM}"/>
+            </TabItem>
+
+            <TabItem Header="🔄  Convert" Style="{StaticResource ModernTabItem}">
+                <views:ConvertPage/>
+            </TabItem>
+        </TabControl>
+
+        <!-- ═══════════════════════════════════════════════════ -->
+        <!-- STATUS BAR (50px height) -->
+        <!-- ═══════════════════════════════════════════════════ -->
+        <Border Grid.Row="3" Height="50">
+            <Border.Background>
+                <LinearGradientBrush StartPoint="0,0" EndPoint="1,0">
+                    <GradientStop Color="#0F0F1E" Offset="0"/>
+                    <GradientStop Color="#1A0F2E" Offset="1"/>
+                </LinearGradientBrush>
+            </Border.Background>
+            <Border BorderBrush="#2A2A40" BorderThickness="0,1,0,0" Padding="20,0">
+                <TextBlock VerticalAlignment="Center"
+                           FontSize="13"
+                           FontWeight="{Binding IsStatusError, Converter={StaticResource BoolToFontWeight}}"
+                           TextTrimming="CharacterEllipsis">
+                    <TextBlock.Style>
+                        <Style TargetType="TextBlock">
+                            <Setter Property="Foreground" Value="#8888AA"/>
+                            <Style.Triggers>
+                                <DataTrigger Binding="{Binding IsStatusError}" Value="True">
+                                    <Setter Property="Foreground" Value="#FF4444"/>
+                                    <Setter Property="FontWeight" Value="Bold"/>
+                                </DataTrigger>
+                            </Style.Triggers>
+                        </Style>
+                    </TextBlock.Style>
+                    <Run Text="{Binding StatusBarText, Mode=OneWay}"/>
+                </TextBlock>
+            </Border>
+        </Border>
+    </Grid>
+</Window>

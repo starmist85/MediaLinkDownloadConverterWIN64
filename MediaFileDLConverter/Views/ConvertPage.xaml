@@ -1,0 +1,28 @@
+<UserControl x:Class="MediaFileDLConverter.Views.ConvertPage"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             d:DesignHeight="600" d:DesignWidth="800">
+
+    <Grid>
+        <Border Background="#1E1E2E" CornerRadius="12" Margin="20,15" Padding="40">
+            <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center">
+                <TextBlock Text="🔄" FontSize="60" HorizontalAlignment="Center" Margin="0,0,0,16"/>
+                <TextBlock Text="Media Converter" Foreground="#E0E0F0" FontSize="24" FontWeight="Bold"
+                           HorizontalAlignment="Center" Margin="0,0,0,8"/>
+                <TextBlock Text="Coming Soon" Foreground="#BB86FC" FontSize="16" FontWeight="SemiBold"
+                           HorizontalAlignment="Center" Margin="0,0,0,12"/>
+                <TextBlock Text="Convert between media formats locally —&#x0a;drag and drop files or browse to convert."
+                           Foreground="#666680" FontSize="13" HorizontalAlignment="Center"
+                           TextAlignment="Center" LineHeight="22"/>
+                <Border Background="#252540" CornerRadius="8" Padding="16,10" Margin="0,20,0,0"
+                        HorizontalAlignment="Center">
+                    <TextBlock Text="This feature will be available in a future update."
+                               Foreground="#8888AA" FontSize="12"/>
+                </Border>
+            </StackPanel>
+        </Border>
+    </Grid>
+</UserControl>
