@@ -1,4 +1,4 @@
-Releases Download Page:
+Releases MSI Installer Download Page:
 
 https://github.com/starmist85/MediaLinkDownloadConverterWIN64/releases
 
