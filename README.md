@@ -1,3 +1,7 @@
+Releases Download Page:
+
+https://github.com/starmist85/MediaLinkDownloadConverterWIN64/releases
+
 Download MSI Installer here:
 
 https://www.starmist.link/software/MediaFileDLConverter_v1.0_Setup.msi
