@@ -56,7 +56,7 @@
       </Component>
     </ComponentGroup>
 
-    <Icon Id="AppIcon" SourceFile="$(PublishDir)MediaFileDLConverter.exe" />
+    <Icon Id="AppIcon" SourceFile="$(var.ProjectDir)\Assets\AppIcon.ico" />
 
     <!-- Single feature containing all components -->
     <Feature Id="Complete" Title="MediaFileDLConverter v1.0" Level="1">

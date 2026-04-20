@@ -9,6 +9,7 @@
     <AssemblyName>MediaFileDLConverter</AssemblyName>
     <RootNamespace>MediaFileDLConverter</RootNamespace>
     <Version>1.0.0</Version>
+    <ApplicationIcon>Assets\AppIcon.ico</ApplicationIcon>
     <AssemblyTitle>MediaFileDLConverter</AssemblyTitle>
     <Description>Media File Downloader and Converter</Description>
   </PropertyGroup>

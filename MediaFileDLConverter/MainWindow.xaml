@@ -10,7 +10,7 @@
         MinHeight="650" MinWidth="700"
         WindowStartupLocation="CenterScreen"
         Background="#141422"
-        Icon="Assets/AppIcon.png">
+        Icon="Assets/AppIcon.ico">
 
     <Grid>
         <Grid.RowDefinitions>
